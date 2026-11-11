@@ -1,0 +1,37 @@
+# NIDRS — Python Dependencies
+# ============================================================
+# Install with:  pip install -r requirements.txt
+#
+# NOTE (scikit-learn version): the shipped .pkl models were trained
+# with scikit-learn==1.7.2. Loading them with a different version can
+# print a warning or, in rare cases, behave inconsistently — this is
+# pinned exactly for that reason. If you retrain the models yourself
+# (model/train_model.py, model/multiclass_model.py,
+# data/train_live_anomaly_model.py) with a newer scikit-learn, you can
+# relax this pin.
+
+# --- Core ---
+pandas==2.2.2
+scikit-learn==1.7.2
+joblib==1.5.3
+numpy>=1.26
+
+# --- Dashboard ---
+streamlit==1.38.0
+streamlit-autorefresh==1.0.1
+plotly==5.24.1
+
+# --- Reports & Live Capture ---
+reportlab==4.4.10
+scapy==2.6.1
+
+# --- Tier 2 upgrades (GeoIP + Threat Intelligence) ---
+requests==2.32.3
+
+# --- Class imbalance fix (SMOTE) ---
+# multiclass_model.py always applies SMOTE. With this library installed
+# it uses SMOTENC; without it, the built-in SMOTE in model/smote_utils.py.
+imbalanced-learn==0.13.0
+
+# --- Optional: EDA / plotting scripts (eda.py) ---
+matplotlib==3.9.2
